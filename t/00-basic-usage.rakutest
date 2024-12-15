@@ -1,0 +1,22 @@
+#!/usr/bin/env raku
+use v6.d;
+
+use lib <. lib>;
+use DSL::Examples;
+use Test;
+
+plan *;
+
+## 1
+isa-ok dsl-examples, Hash:D;
+
+## 2
+isa-ok dsl-examples(lang => 'WL'), Hash:D;
+
+## 3
+isa-ok dsl-examples(lang => 'WL', workflow => 'QRMon'), Hash:D;
+
+## 4
+dies-ok {dsl-examples(lang => 3)}, "wrong type of lang argument";
+
+done-testing;
