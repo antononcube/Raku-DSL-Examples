@@ -1,7 +1,6 @@
 #!/usr/bin/env raku
 use v6.d;
 
-use lib <. lib>;
 use DSL::Examples;
 use LLM::Functions;
 use LLM::Prompts;
