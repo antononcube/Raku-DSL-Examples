@@ -46,7 +46,7 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 
-Run the function over 
+Run the LLM function over a list of DSL commands: 
 
 ```raku
 my @commands = 

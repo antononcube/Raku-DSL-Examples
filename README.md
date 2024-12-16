@@ -55,7 +55,7 @@ my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 # -> **@args, *%args { #`(Block|2302078413936) ... }
 ```
 
-Run the function over 
+Run the LLM function over a list of DSL commands:
 
 ```raku
 my @commands = 
