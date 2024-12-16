@@ -3,9 +3,9 @@
 Raku data package with examples of DSL commands translations to programming code. (
 
 The DSL examples are suitable for LLM few-shot training. 
-The function `llm-example-function` provided by 
+The sub `llm-example-function` provided by 
 ["LLM::Functions"](https://github.com/antononcube/Raku-LLM-Functions), [AAp2], 
-can effectively used with those examples.
+can be effectively used to create translation functions utilizing those examples.
 
 The utilization of such LLM-translation functions is exemplified below.
 Also in the presentation ["Robust LLM pipelines (Mathematica, Python, Raku)"](https://youtu.be/QOsVTCQZq_s):
