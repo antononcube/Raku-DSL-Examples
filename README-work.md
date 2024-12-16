@@ -31,9 +31,6 @@ use Data::TypeSystem;
 dsl-examples() 
     ==> deduce-type(:tally)
 ```
-```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 12), Assoc(Atom((Str)), Atom((Str)), 22)]), 2) => 1, Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 18), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 25)]), 3) => 1], 2), 2)
-```
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
@@ -41,18 +38,12 @@ Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline seg
 dsl-examples('Python', 'LSAMon')
     ==> deduce-type(:tally)
 ```
-```
-# Assoc(Atom((Str)), Atom((Str)), 12)
-```
 
 Make an LLM example function for translation of LSA workflow building commands:
 
 ```raku
 use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
-```
-```
-# -> **@args, *%args { #`(Block|2302078413936) ... }
 ```
 
 Run the function over 
@@ -67,12 +58,6 @@ my @commands =
 @commands
 .map({ .&llm-pipeline-segment })
 .join("⟹\n")
-```
-```
-# LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules"->None]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
-# LSAMonEchoTopicsTable[]
 ```
 
 -----
