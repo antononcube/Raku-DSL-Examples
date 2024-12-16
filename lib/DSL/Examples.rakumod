@@ -38,7 +38,8 @@ multi sub dsl-examples(:l(:$lang) = Whatever, :w(:$workflow) = Whatever) {
         when (Whatever, Whatever) { %res }
         when $_.head ~~ Str:D && $_.tail.isa(Whatever) { %res{$_.head} }
         when $_.head.isa(Whatever) && $_.tail ~~ Str:D { %res.map(*{$_.tail}) }
-        default {  %res }
+        when $_.head ~~ Str:D && $_.tail ~~ Str:D { %res{$_.head}{$_.tail} }
+        default { %res }
     }
 }
 
