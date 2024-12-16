@@ -2,7 +2,8 @@
 
 Raku data package with examples of DSL commands translations to programming code. (
 
-The DSL examples are suitable for LLM few-shot training. 
+The DSL examples are suitable for 
+[LLM few-shot training](https://www.prompthub.us/blog/the-few-shot-prompting-guide). 
 The sub `llm-example-function` provided by 
 ["LLM::Functions"](https://github.com/antononcube/Raku-LLM-Functions), [AAp2],
 can be effectively used to create translation functions utilizing those examples.
