@@ -12,7 +12,7 @@ Also in the presentation ["Robust LLM pipelines (Mathematica, Python, Raku)"](ht
 - [Short introduction](https://youtu.be/QOsVTCQZq_s?t=89)
 - [Detailed explanations](https://www.youtube.com/watch?v=QOsVTCQZq_s&t=2840s)
 
-Similar translation -- with much less computational resources -- is achieved with 
+Similar translations -- with much less computational resources -- are achieved with 
 grammar-based DSL translators; see 
 ["DSL::Translators"](https://github.com/antononcube/Raku-DSL-Translators), [AAp1].
 
