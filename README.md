@@ -1,6 +1,20 @@
 # DSL::Examples
 
-Raku data package with examples of DSL commands translations to programming code. (Suitable for LLM training.)
+Raku data package with examples of DSL commands translations to programming code. (
+
+The DSL examples are suitable for LLM few-shot training. 
+The function `llm-example-function` provided by 
+["LLM::Functions"](https://github.com/antononcube/Raku-LLM-Functions), [AAp2], 
+can effectively used with those examples.
+
+The utilization of such LLM-translation functions is exemplified below.
+Also in the presentation ["Robust LLM pipelines (Mathematica, Python, Raku)"](https://youtu.be/QOsVTCQZq_s):
+- [Short introduction](https://youtu.be/QOsVTCQZq_s?t=89)
+- [Detailed explanations](https://www.youtube.com/watch?v=QOsVTCQZq_s&t=2840s)
+
+Similar translation -- with much less computational resources -- is achieved with 
+grammar-based DSL translators; see 
+["DSL::Translators"](https://github.com/antononcube/Raku-DSL-Translators), [AAp1].
 
 -----
 
@@ -32,7 +46,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 18), Assoc(Atom((Str)), Atom((Str)), 25), Assoc(Atom((Str)), Atom((Str)), 14)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 12), Assoc(Atom((Str)), Atom((Str)), 22)]), 2)]), 2)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15)]), 2), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 27)]), 3)]), 2)
 ```
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
@@ -42,7 +56,7 @@ dsl-examples('Python', 'LSAMon')
     ==> deduce-type(:tally)
 ```
 ```
-# Assoc(Atom((Str)), Atom((Str)), 12)
+# Assoc(Atom((Str)), Atom((Str)), 15)
 ```
 
 Make an LLM example function for translation of LSA workflow building commands:
@@ -50,9 +64,6 @@ Make an LLM example function for translation of LSA workflow building commands:
 ```raku
 use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
-```
-```
-# -> **@args, *%args { #`(Block|3330761959544) ... }
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -70,7 +81,7 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules"->None]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules"->{}]⟹
 # LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
@@ -86,7 +97,7 @@ my @commands =
 (2020-2024),
 [GitHub/antononcube](https://github.com/antononcube).
 
-[AAp3] Anton Antonov,
+[AAp2] Anton Antonov,
 [LLM::Functions Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
 (2023-2024),
 [GitHub/antononcube](https://github.com/antononcube).
