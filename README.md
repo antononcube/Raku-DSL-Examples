@@ -28,11 +28,11 @@ Get all examples:
 use DSL::Examples;
 use Data::TypeSystem;
 
-dsl-examples() 
-    ==> deduce-type(:tally)
+dsl-examples()
+    ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 12), Assoc(Atom((Str)), Atom((Str)), 22)]), 2) => 1, Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 18), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 25)]), 3) => 1], 2), 2)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 18), Assoc(Atom((Str)), Atom((Str)), 25), Assoc(Atom((Str)), Atom((Str)), 14)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 12), Assoc(Atom((Str)), Atom((Str)), 22)]), 2)]), 2)
 ```
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
@@ -52,10 +52,10 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 ```
-# -> **@args, *%args { #`(Block|2302078413936) ... }
+# -> **@args, *%args { #`(Block|3330761959544) ... }
 ```
 
-Run the LLM function over a list of DSL commands:
+Run the LLM function over a list of DSL commands: 
 
 ```raku
 my @commands = 
@@ -82,11 +82,16 @@ my @commands =
 ### Packages
 
 [AAp1] Anton Antonov,
+[DSL::Translators Raku package](https://github.com/antononcube/Raku-DSL-Translators),
+(2020-2024),
+[GitHub/antononcube](https://github.com/antononcube).
+
+[AAp3] Anton Antonov,
 [LLM::Functions Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
 (2023-2024),
 [GitHub/antononcube](https://github.com/antononcube).
 
-[AAp2] Anton Antonov,
+[AAp3] Anton Antonov,
 [LLM::Prompts Raku package](https://github.com/antononcube/Raku-LLM-Prompts), 
 (2023-2024),
 [GitHub/antononcube](https://github.com/antononcube).

@@ -28,8 +28,8 @@ Get all examples:
 use DSL::Examples;
 use Data::TypeSystem;
 
-dsl-examples() 
-    ==> deduce-type(:tally)
+dsl-examples()
+    ==> deduce-type()
 ```
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
@@ -67,11 +67,16 @@ my @commands =
 ### Packages
 
 [AAp1] Anton Antonov,
+[DSL::Translators Raku package](https://github.com/antononcube/Raku-DSL-Translators),
+(2020-2024),
+[GitHub/antononcube](https://github.com/antononcube).
+
+[AAp3] Anton Antonov,
 [LLM::Functions Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
 (2023-2024),
 [GitHub/antononcube](https://github.com/antononcube).
 
-[AAp2] Anton Antonov,
+[AAp3] Anton Antonov,
 [LLM::Prompts Raku package](https://github.com/antononcube/Raku-LLM-Prompts), 
 (2023-2024),
 [GitHub/antononcube](https://github.com/antononcube).
