@@ -1,31 +1,32 @@
 {
-    "name": "DSL::Examples",
-    "description": "Raku data package with examples of DSL commands translations to programming code. (Suitable for LLM training.)",
-    "version": "0.0.1",
-    "authors": [
-        "Anton Antonov"
-    ],
-    "auth": "zef:antononcube",
-    "depends": [
-        "JSON::Fast:ver<0.19+>"
-    ],
-    "build-depends": [],
-    "provides": {
-        "DSL::Examples": "lib/DSL/Examples.rakumod"
-    },
-    "resources": [
-        "dsl-examples.json"
-    ],
-    "license": "Artistic-2.0",
-    "tags": [
-        "database",
-        "domain specific language",
-        "dsl",
-        "examples",
-        "large language model",
-        "llm",
-        "repository"
-    ],
-    "api": "0",
-    "source-url": "https://github.com/antononcube/Raku-DSL-Examples.git"
+  "name": "DSL::Examples",
+  "description": "Raku data package with examples of DSL commands translations to programming code. (Suitable for LLM training.)",
+  "version": "0.0.1",
+  "authors": [
+    "Anton Antonov"
+  ],
+  "auth": "zef:antononcube",
+  "depends": [
+    "JSON::Fast:ver<0.19+>"
+  ],
+  "build-depends": [],
+  "provides": {
+    "DSL::Examples": "lib/DSL/Examples.rakumod"
+  },
+  "resources": [
+    "dsl-examples.json"
+  ],
+  "license": "Artistic-2.0",
+  "tags": [
+    "database",
+    "domain specific language",
+    "dsl",
+    "examples",
+    "large language model",
+    "llm",
+    "repository"
+  ],
+  "api": "0",
+  "source-url": "https://github.com/antononcube/Raku-DSL-Examples.git",
+  "raku": "v6.d"
 }
