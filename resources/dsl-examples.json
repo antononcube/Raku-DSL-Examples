@@ -1,9 +1,11 @@
 {
 	"WL":{
 		"ClCon":{
+			"install the package":"PacletInstall[\"AntonAntonov/MonadicContextualClassification\"]",
+			"load the package":"Needs[\"AntonAntonov`MonadicContextualClassification`\"]",
 			"use the data dfSOXE":"ClConUnit[dfSOXE]",
 			"split the data with ration 0.64":"ClConSplitData[0.64]",
-			"split data intor training and testing parts using training data ratio 0.72":"ClConSplitData[0.72]",
+			"split data into training and testing parts using training data ratio 0.72":"ClConSplitData[0.72]",
 			"Summarize the data":"ClConEchoDataSummary",
 			"show data breakdown":"ClConEchoDataSummary",
 			"echo data summary":"ClConEchoDataSummary",
@@ -21,6 +23,8 @@
 			"reduce the dimension to 14 topics":"ClConReduceDimension[14]"
 		},
 		"QRMon":{
+			"install the package":"PacletInstall[\"AntonAntonov/MonadicQuantileRegression\"]",
+			"load the package":"Needs[\"AntonAntonov`MonadicQuantileRegression`\"]",
 			"use tsTemp":"QRMonUnit[tsTemp]",
 			"with the data tsTemp":"QRMonUnit[tsTemp]",
 			"do regression with 12 knots":"QRMonQuantileRegression[12]",
@@ -48,6 +52,8 @@
 			"show the value":"QRMonEchoValue"
 		},
 		"LSAMon":{
+			"install the package":"PacletInstall[\"AntonAntonov/MonadicLatentSemanticAnalysis\"]",
+			"load the package":"Needs[\"AntonAntonov`MonadicLatentSemanticAnalysis`\"]",
 			"use the documents aDocs":"LSAMonUnit[aDocs]",
 			"use dfTemp":"LSAMonUnit[dfTemp]",
 			"make the document-term matrix":"LSAMonMakeDocumentTermMatrix[]",
@@ -67,6 +73,7 @@
 	},
 	"Python":{
 		"QRMon":{
+			"load the package":"from Regressionizer import *",
 			"use tsTemp":"Regressionizer(temp_data)",
 			"with the data tsTemp":"Regressionizer(temp_data)",
 			"do regression with 12 knots":"quantile_regression(knots=12)",
@@ -91,6 +98,7 @@
 			"show the value":"take_value()"
 		},
 		"LSAMon":{
+			"load the package":"from LatentSemanticAnalyzer import *",
 			"use the documents aDocs":"LatentSemanticAnalyzer(aDocs)",
 			"use dfTemp":"LatentSemanticAnalyzer(dfTemp)",
 			"make the document-term matrix":"make_document_term_matrix()",
