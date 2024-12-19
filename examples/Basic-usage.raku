@@ -28,5 +28,5 @@ say "Translation start...\n";
 .&llm-pipeline-segment.say for @commands;
 
 my $tEnd = now;
-say "\..DONE";
+say "\n\t...DONE";
 say "Translation time {$tEnd - $tStart}.";
