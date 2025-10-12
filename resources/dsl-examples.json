@@ -87,8 +87,8 @@
             "classify by profile for the tag type 'Survival' using the profile: female, 40, 1st": "SMRMonClassify[\"Survival\", {\"female\", 40, \"1st\"})",
             "join across":"SMRMonJoinAcross[]",
             "join across with dfData on identifier column OrderNum":"SMRMonJoinAcross[dfData, \"OrderNum\"]",
-            "apply the term-weight functions IDF, None, Cosine":"SMRMonApplyTermWeightFunctions[\"IDF\", \"None\", \"Cosine\"]",
-            "apply the term-weight functions as follows: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"":"SMRMonApplyTermWeightFunctions[\"GlobalWeightFunction\" -> \"IDF\", \"LocalWeightFunction\" -> \"None\", \"NormalizerFunction\" -> \"Cosine\"]",
+            "apply the LSI term-weight functions IDF, None, Cosine":"SMRMonApplyTermWeightFunctions[\"IDF\", \"None\", \"Cosine\"]",
+            "apply the following LSI term-weight functions global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"":"SMRMonApplyTermWeightFunctions[\"GlobalWeightFunction\" -> \"IDF\", \"LocalWeightFunction\" -> \"None\", \"NormalizerFunction\" -> \"Cosine\"]",
             "echo value":"SMRMonEchoValue[]",
             "echo pipeline value with the function SumFunc, prefix note \"Stat:\"":"SMRMonEchoFunctionValue[\"Stat:\", SumFunc]"
 		}
@@ -153,8 +153,8 @@
             "classify by profile for the tag type 'Survival' using the profile: female, 40, 1st": "classify_by_profile('Survival', ['female', 40, '1st'])",
             "join across": "join_across()",
             "join across with dfData on identifier column OrderNum": "join-across(dfData, on => 'OrderNum')",
-            "apply the term-weight functions IDF, None, Cosine": "apply_term_weight_functions('IDF', 'None', 'Cosine')",
-            "apply the term-weight functions as follows: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply_term_weight_functions(global-weight-func = 'IDF', local-weight-func = 'None', normalizer-func = 'Cosine')",
+            "apply the LSI term-weight functions IDF, None, Cosine": "apply_term_weight_functions('IDF', 'None', 'Cosine')",
+            "apply the following LSI term-weight functions: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply_term_weight_functions(global-weight-func = 'IDF', local-weight-func = 'None', normalizer-func = 'Cosine')",
             "echo value": "echo_value()",
             "echo pipeline value with the function SumFunc, prefix note \"Stat:\"": "echo_value(\"Stat:\", as => &SumFunc)"
         }
@@ -177,8 +177,8 @@
             "classify by profile for the tag type 'Survival' using the profile: female, 40, 1st": "classify-by-profile('Survival', ['female', 40, '1st'])",
             "join across": "join-across()",
             "join across with dfData on identifier column OrderNum": "join-across(dfData, on => 'OrderNum')",
-            "apply the term-weight functions IDF, None, Cosine": "apply-term-weight-functions('IDF', 'None', 'Cosine')",
-            "apply the term-weight functions as follows: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply-term-weight-functions(global-weight-function => 'IDF', local-weight-function => 'None', normalizer-function => 'Cosine')",
+            "apply the LSI term-weight functions IDF, None, Cosine": "apply-term-weight-functions('IDF', 'None', 'Cosine')",
+            "apply the following LSI term-weight functions: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply-term-weight-functions(global-weight-function => 'IDF', local-weight-function => 'None', normalizer-function => 'Cosine')",
             "echo value": "echo-value()",
             "echo pipeline value with the function SumFunc, prefix note \"Stat:\"": "echo-value(\"Stat:\", as => &SumFunc)"
         }
