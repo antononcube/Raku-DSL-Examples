@@ -69,6 +69,27 @@
 			"Echo topics table with 10 terms per topic":"LSAMonEchoTopicsTable[\"NumberOfTerms\"->10]",
 			"show the topics":"LSAMonEchoTopicsTable[]",
 			"find the statistical thesaurus for notebook, equation, and function":"LSAMonEchoStatisticalThesaurus[\"Words\"->{\"notebook\",\"equation\",\"funciton\"}]"
+		},
+		"SMRMon": {
+			"install the package":"PacletInstall[\"AntonAntonov/MonadicSparseMatrixRecommender\"]",
+			"load the package":"Needs[\"AntonAntonov`MonadicSparseMatrixRecommender`\"]",
+			"new recommender":"SMRMonUnit[]",
+			"monad's unit":"SMRMonUnit[]",
+			"create with dfTemp":"SMRMonUnit[]⟹SMRMonCreate[dfTemp]",
+			"create using dfData with identifier column 'rec_id'":"SMRMonCreate[dfData, \"rec_id\"]",
+            "create from wide format dataset, identifier column \"id\"":"SMRMonCreateFromWideForm[dsTitanic, \"id\"]",
+			"recommend by history for prod1, prod32, and new_prod98":"SMRMonRecommend[{\"prod1\", \"prod32\", \"new_prod98\"}]",
+			"top 22 recommendations for the items prod1, prod32, and new_prod98":"SMRMonRecommend[{\"prod1\", \"prod32\", \"new_prod98\"}, 22]",
+			"compute profile for the items arm39, car23, and pod91":"SMRMonProfile[{\"arm39\", \"car23\", \"pod91\"}",
+			"recommend by profile: female, 34, 2nd":"SMRMonRecommendByProfile[{\"female\", 34, \"2nd\"}]",
+			"recommend by the profile: sex.female=2, age.34=1.2, class.2nd=3":"SMRMonRecommendByProfile[{\"sex.female\"->2, \"age.34\"->1.2, \"class.2nd\"->3}]",
+			"top 13 recommendations for the profile: male, 70, 3rd":"SMRMonRecommendByProfile[{\"male\", 70, \"3rd\"}, 13]",
+            "join across":"SMRMonJoinAcross[]",
+            "join across with dfData on identifier column OrderNum":"SMRMonJoinAcross[dfData, \"OrderNum\"]",
+            "apply the term-weight functions IDF, None, Cosine":"SMRMonApplyTermWeightFunctions[\"IDF\", \"None\", \"Cosine\"]",
+            "apply the term-weight functions as follows: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"":"SMRMonApplyTermWeightFunctions[\"GlobalWeightFunction\" -> \"IDF\", \"LocalWeightFunction\" -> \"None\", \"NormalizerFunction\" -> \"Cosine\"]",
+            "echo value":"SMRMonEchoValue[]",
+            "echo pipeline value with the function SumFunc, prefix note \"Stat:\"":"SMRMonEchoFunctionValue[\"Stat:\", SumFunc]"
 		}
 	},
 	"Python":{
@@ -113,6 +134,50 @@
 			"Echo topics table with 10 terms per topic":"echo_topics_interpretation(number_of_terms=10, wide_form=True)",
 			"find the statistical thesaurus for the words notebook, equation, and function":"echo_statistical_thesaurus(terms=stemmerObj.stemWords(['notebook','equation','function']), wide_form=True)",
 			"show statistical thesaurus for king, castle, poison, Denmark, each entry with 12 words":"echo_statistical_thesaurus(terms=stemmerObj.stemWords(['king','castle','poison','Denmark']), wide_form=True, number_of_nearest_neighbors=12)"
-		}
-	}
+		},
+        "SMRMon": {
+            "install the package":"python3 -m pip install SparseMatrixRecommender",
+            "load the package":"from SparseMatrixRecommender import *",
+            "new recommender":"SparseMatrixRecommender()",
+            "monad's unit":"SparseMatrixRecommender()",
+            "create with dfTemp":"create(dfTemp)",
+            "create using dfData with identifier column 'rec_id'":"create(data = dfData, item_column_name = \"rec_id\")",
+            "create from wide format dataset, identifier column \"id\"":"create(data = dfData, item_column_name = \"rec_id\")",
+            "recommend by history for prod1, prod32, and new_prod98":"recommend(['prod1', 'prod32', 'new_prod98'])",
+            "top 22 recommendations for the items prod1, prod32, and new_prod98": "recommend[[\"prod1\", \"prod32\", \"new_prod98\"], 22]",
+            "compute profile for the items arm39, car23, and pod91": "profile(['arm39', 'car23', 'pod91'])",
+            "recommend by profile: female, 34, 2nd": "recommend_by_profile(['female', 34, '2nd'])",
+            "recommend by the profile: sex.female=2, age.34=1.2, class.2nd=3": "recommend_by_profile({'sex.female':2, 'age.34':1.2, 'class.2nd':3})",
+            "top 13 recommendations for the profile: male, 70, 3rd": "recommend_by_profile(['male', 70, '3rd'], nrecs=13)",
+            "join across": "join_across()",
+            "join across with dfData on identifier column OrderNum": "join-across(dfData, on => 'OrderNum')",
+            "apply the term-weight functions IDF, None, Cosine": "apply_term_weight_functions('IDF', 'None', 'Cosine')",
+            "apply the term-weight functions as follows: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply_term_weight_functions(global-weight-func = 'IDF', local-weight-func = 'None', normalizer-func = 'Cosine')",
+            "echo value": "echo_value()",
+            "echo pipeline value with the function SumFunc, prefix note \"Stat:\"": "echo_value(\"Stat:\", as => &SumFunc)"
+        }
+	},
+    "Raku":{
+        "SMRMon": {
+            "install the package":"zef install ML::SparseMatrixRecommender",
+            "load the package":"use ML::SparseMatrixRecommender;",
+            "new recommender":"ML::SparseMatrixRecommender.new",
+            "monad's unit":"ML::SparseMatrixRecommender.new",
+            "create with dfTemp":"create(dfTemp)",
+            "create using dfData with identifier column 'rec_id'":"create(dfData, item-column-name => \"rec_id\")",
+            "create from wide format dataset, identifier column \"id\"":"create(dfData, item-column-name => \"rec_id\")",
+            "recommend by history for prod1, prod32, and new_prod98":"recommend(['prod1', 'prod32', 'new_prod98'])",
+            "top 22 recommendations for the items prod1, prod32, and new_prod98": "recommend[[\"prod1\", \"prod32\", \"new_prod98\"], 22]",
+            "compute profile for the items arm39, car23, and pod91": "profile(['arm39', 'car23', 'pod91'])",
+            "recommend by profile: female, 34, 2nd": "recommend-by-profile(['female', 34, '2nd'])",
+            "recommend by the profile: sex.female=2, age.34=1.2, class.2nd=3": "recommend-by-profile({'sex.female'=>2, 'age.34'=>1.2, 'class.2nd'=>3})",
+            "top 13 recommendations for the profile: male, 70, 3rd": "recommend-by-profile(['male', 70, '3rd'], 13)",
+            "join across": "join-across()",
+            "join across with dfData on identifier column OrderNum": "join-across(dfData, on => 'OrderNum')",
+            "apply the term-weight functions IDF, None, Cosine": "apply-term-weight-functions('IDF', 'None', 'Cosine')",
+            "apply the term-weight functions as follows: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply-term-weight-functions(global-weight-function => 'IDF', local-weight-function => 'None', normalizer-function => 'Cosine')",
+            "echo value": "echo-value()",
+            "echo pipeline value with the function SumFunc, prefix note \"Stat:\"": "echo-value(\"Stat:\", as => &SumFunc)"
+        }
+    }
 }
