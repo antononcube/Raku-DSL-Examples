@@ -47,6 +47,15 @@ dsl-examples()
     ==> deduce-type()
 ```
 
+Tabulate all languages and available workflow examples:
+
+```raku, results=asis
+use Data::Translators;
+dsl-examples().map({ $_.key X $_.value.keys }).flat(1).map({ <language workflow> Z=> $_ })».Hash.sort.Array
+==> to-dataset()
+==> to-html(field-names => <language workflow>)
+```
+
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
 ```raku
