@@ -145,7 +145,7 @@
             "create using dfData with identifier column 'rec_id'":"create(data = dfData, item_column_name = \"rec_id\")",
             "create from wide format dataset, identifier column \"id\"":"create(data = dfData, item_column_name = \"rec_id\")",
             "recommend by history for prod1, prod32, and new_prod98":"recommend(['prod1', 'prod32', 'new_prod98'])",
-            "top 22 recommendations for the items prod1, prod32, and new_prod98": "recommend[[\"prod1\", \"prod32\", \"new_prod98\"], 22]",
+            "top 22 recommendations for the items prod1, prod32, and new_prod98": "recommend([\"prod1\", \"prod32\", \"new_prod98\"], nrecs = 22)",
             "compute profile for the items arm39, car23, and pod91": "profile(['arm39', 'car23', 'pod91'])",
             "recommend by profile: female, 34, 2nd": "recommend_by_profile(['female', 34, '2nd'])",
             "recommend by the profile: sex.female=2, age.34=1.2, class.2nd=3": "recommend_by_profile({'sex.female':2, 'age.34':1.2, 'class.2nd':3})",
@@ -156,9 +156,33 @@
             "apply the LSI term-weight functions IDF, None, Cosine": "apply_term_weight_functions('IDF', 'None', 'Cosine')",
             "apply the following LSI term-weight functions: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply_term_weight_functions(global-weight-func = 'IDF', local-weight-func = 'None', normalizer-func = 'Cosine')",
             "echo value": "echo_value()",
-            "echo pipeline value with the function SumFunc, prefix note \"Stat:\"": "echo_value(\"Stat:\", as => &SumFunc)"
+            "echo pipeline value with the function SumFunc": "echo_function_value(&SumFunc)"
         }
 	},
+    "R":{
+        "SMRMon": {
+            "install the package":"devtools::install_github(repo = \"antononcube/R-packages\", subdir = \"SMRMon-R\")",
+            "load the package":"library(SMRMon)",
+            "new recommender":"SMRMonUnit()",
+            "monad's unit":"SMRMonUnit()",
+            "create with dfTemp":"SMRMonCreate(data = dfTemp)",
+            "create using dfData with identifier column 'rec_id'":"SMRMonCreate(data = dfData, itemColumnName = \"rec_id\")",
+            "create from wide format dataset, identifier column \"id\"":"SMRMonCreate(data = dfData, itemColumnName = \"rec_id\")",
+            "recommend by history for prod1, prod32, and new_prod98":"SMRMonRecommend(c('prod1', 'prod32', 'new_prod98'))",
+            "top 22 recommendations for the items prod1, prod32, and new_prod98": "SMRMonRecommend(c(\"prod1\", \"prod32\", \"new_prod98\"), nrecs = 22)",
+            "compute profile for the items arm39, car23, and pod91": "SMRMonProfile(c('arm39', 'car23', 'pod91'))",
+            "recommend by profile: female, 34, 2nd": "SMRMonRecommendByProfile(c('female', 34, '2nd'))",
+            "recommend by the profile: sex.female=2, age.34=1.2, class.2nd=3": "SMRMonRecommendByProfile(c('sex.female'=2, 'age.34'=1.2, 'class.2nd'=3))",
+            "top 13 recommendations for the profile: male, 70, 3rd": "SMRMonRecommendByProfile(c('male', 70, '3rd'), nrecs = 13)",
+            "classify by profile for the tag type 'Survival' using the profile: female, 40, 1st": "SMRMonClassifyByProfile(tagType = 'Survival', profile = c('female', 40, '1st'))",
+            "join across": "SMRMonJoinAcross()",
+            "join across with dfData on identifier column OrderNum": "SMRMonJoinAcross(data = dfData, by = 'OrderNum')",
+            "apply the LSI term-weight functions IDF, None, Cosine": "SMRMonApplyTermWeightFunctions('IDF', 'None', 'Cosine')",
+            "apply the following LSI term-weight functions: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "SMRMonApplyTermWeightFunctions(globalWeightFunction = 'IDF', localWeightFunction = 'None', normalizerFunction = 'Cosine')",
+            "echo value": "SMRMonEchoValue()",
+            "echo pipeline value with the function SumFunc": "SMRMonEchoFunctionValue(f = &SumFunc)"
+        }
+    },
     "Raku":{
         "SMRMon": {
             "install the package":"zef install ML::SparseMatrixRecommender",
@@ -169,7 +193,7 @@
             "create using dfData with identifier column 'rec_id'":"create(dfData, item-column-name => \"rec_id\")",
             "create from wide format dataset, identifier column \"id\"":"create(dfData, item-column-name => \"rec_id\")",
             "recommend by history for prod1, prod32, and new_prod98":"recommend(['prod1', 'prod32', 'new_prod98'])",
-            "top 22 recommendations for the items prod1, prod32, and new_prod98": "recommend[[\"prod1\", \"prod32\", \"new_prod98\"], 22]",
+            "top 22 recommendations for the items prod1, prod32, and new_prod98": "recommend([\"prod1\", \"prod32\", \"new_prod98\"], 22)",
             "compute profile for the items arm39, car23, and pod91": "profile(['arm39', 'car23', 'pod91'])",
             "recommend by profile: female, 34, 2nd": "recommend-by-profile(['female', 34, '2nd'])",
             "recommend by the profile: sex.female=2, age.34=1.2, class.2nd=3": "recommend-by-profile({'sex.female'=>2, 'age.34'=>1.2, 'class.2nd'=>3})",
