@@ -75,7 +75,7 @@
 			"load the package":"Needs[\"AntonAntonov`MonadicSparseMatrixRecommender`\"]",
 			"new recommender":"SMRMonUnit[]",
 			"monad's unit":"SMRMonUnit[]",
-			"create with dfTemp":"SMRMonUnit[]⟹SMRMonCreate[dfTemp]",
+			"create with dfTemp":"SMRMonCreate[dfTemp]",
 			"create using dfData with identifier column 'rec_id'":"SMRMonCreate[dfData, \"rec_id\"]",
             "create from wide format dataset, identifier column \"id\"":"SMRMonCreateFromWideForm[dsTitanic, \"id\"]",
 			"recommend by history for prod1, prod32, and new_prod98":"SMRMonRecommend[{\"prod1\", \"prod32\", \"new_prod98\"}]",
