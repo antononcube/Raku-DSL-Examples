@@ -64,7 +64,7 @@
 			"apply term weight functions":"LSAMonApplyTermWeightFunctions[]",
 			"apply term weight functions: global IDF, local None, normalizer Cosine":"LSAMonApplyTermWeightFunctions[\"GlobalWeightFunction\"->\"IDF\",\"LocalWeightFunction\"->\"None\",\"NormalizerFunction\"->\"Cosine\"]",
 			"extract 30 topics using the method SVD":"LSAMonExtractTopics[\"NumberOfTopics\"->30,Method->\"SVD\"]",
-			"extract 24 topics using the method NNMF, max steps 12 and min number of documents per term 10":"LSAMonExtractTopics[\"NumberOfTopics\"->24,Method->\"SVD\",\"MaxSteps\"->12,\"MinNumberOfDocumentsPerTerm\"->10]",
+			"extract 24 topics using the method NNMF, max steps 12 and min number of documents per term 10":"LSAMonExtractTopics[\"NumberOfTopics\"->24,Method->\"NNMF\",\"MaxSteps\"->12,\"MinNumberOfDocumentsPerTerm\"->10]",
 			"Echo topics table":"LSAMonEchoTopicsTable[]",
 			"Echo topics table with 10 terms per topic":"LSAMonEchoTopicsTable[\"NumberOfTerms\"->10]",
 			"show the topics":"LSAMonEchoTopicsTable[]",
@@ -160,6 +160,25 @@
         }
 	},
     "R":{
+        "LSAMon":{
+            "install the package":"devtools::install_github(repo = \"antononcube/R-packages\", subdir = \"LSAMon-R\")",
+            "load the package":"library(LSAMon)",
+            "use the documents aDocs":"LSAMonUnit(aDocs)",
+            "use dfTemp":"LSAMonUnit(dfTemp)",
+            "make the document-term matrix":"LSAMonMakeDocumentTermMatrix()",
+            "make the document-term matrix with automatic stop words":"LSAMonMakeDocumentTermMatrix(stemmingRules = NULL, stopWords = NULL)",
+            "make the document-term matrix without stemming":"LSAMonMakeDocumentTermMatrix(stemmingRules = NULL, stemWordsQ = FALSE, stopWords = NULL)",
+            "echo document term matrix statistics":"LSAMonEchoDocumentTermMatrixStatistics()",
+            "echo document term matrix metrics with log base 10":"LSAMonEchoDocumentTermMatrixStatistics(logBase=10)",
+            "apply term weight functions":"LSAMonApplyTermWeightFunctions()",
+            "apply term weight functions: global IDF, local None, normalizer Cosine":"LSAMonApplyTermWeightFunctions(globalWeightFunction=\"IDF\", localWeightFunction=\"None\", normalizerFunction=\"Cosine\")",
+            "extract 30 topics using the method SVD":"LSAMonExtractTopics(numberOfTopics=30, method=\"SVD\")",
+            "extract 24 topics using the method NNMF, max steps 12 and min number of documents per term 10":"LSAMonExtractTopics(numberOfTopics=24,method=\"NNMF\",maxSteps=12,minNumberOfDocumentsPerTerm=10)",
+            "Echo topics table":"LSAMonEchoTopicsTable()",
+            "Echo topics table with 10 terms per topic":"LSAMonEchoTopicsTable(numberOfTerms=10)",
+            "show the topics":"LSAMonEchoTopicsTable()",
+            "find the statistical thesaurus for notebook, equation, and function":"LSAMonEchoStatisticalThesaurus(words=c(\"notebook\",\"equation\",\"funciton\"))"
+        },
         "SMRMon": {
             "install the package":"devtools::install_github(repo = \"antononcube/R-packages\", subdir = \"SMRMon-R\")",
             "load the package":"library(SMRMon)",
