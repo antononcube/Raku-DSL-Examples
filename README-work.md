@@ -81,6 +81,7 @@ my @commands =
 
 @commands
 .map({ .&llm-pipeline-segment })
+.map({ .subst(/:i Output ':'?/):g })
 .join("⟹\n")
 ```
 

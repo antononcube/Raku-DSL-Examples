@@ -47,7 +47,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Assoc(Atom((Str)), Atom((Str)), 20), 1), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15)]), 3)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 23)]), 3), Assoc(Atom((Str)), Assoc(Atom((Str)), Atom((Str)), 20), 1)]), 4)
 ```
 
 Tabulate all languages and available workflow examples:
@@ -78,7 +78,7 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 ```
-# LLM::Function(-> **@args, *%args { #`(Block|5857331590416) ... }, 'chatgpt')
+# LLM::Function(-> **@args, *%args { #`(Block|4301755332504) ... }, 'chatgpt')
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -92,13 +92,14 @@ my @commands =
 
 @commands
 .map({ .&llm-pipeline-segment })
+.map({ .subst(/:i Output ':'?/):g })
 .join("⟹\n")
 ```
 ```
-# Output: LSAMonUnit[aAbstracts]⟹
-# Output: LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
-# Output: LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
-# Output: LSAMonEchoTopicsTable[]
+# LSAMonUnit[aAbstracts]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
+# LSAMonEchoTopicsTable[]
 ```
 
 -----
