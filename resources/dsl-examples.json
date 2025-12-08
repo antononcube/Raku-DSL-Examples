@@ -228,6 +228,18 @@
             "apply the following LSI term-weight functions: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "SMRMonApplyTermWeightFunctions(globalWeightFunction = 'IDF', localWeightFunction = 'None', normalizerFunction = 'Cosine')",
             "echo value": "SMRMonEchoValue()",
             "echo pipeline value with the function SumFunc": "SMRMonEchoFunctionValue(f = &SumFunc)"
+        },
+        "DataReshaping": {
+          "load data wrangling package": "library(tidyverse)",
+          "use the dataset dfTitanic": "dfTitanic",
+          "show dimensions": "(function(x) { print(dim(x)); x })",
+          "rename columns passengerAge as age, passengerSex as sex, passengerClass as class": "dplyr::rename(age = passengerAge, sex = passengerSex, class = passengerClass)",
+          "filter by passengerAge greater than 12": "dplyr::filter(passengerAge > 12)",
+          "group by passengerSex and passengerClass": "group_by(passengerSex, passengerClass)",
+          "show counts": "(function(x) { print(counts(x)); x })",
+          "counts": "dplyr::count()",
+          "cross tabulate passengerSex with passengerSurvival": "(function(x) {xtabs(~ passengerSex + passengerSurvival, data = x) })",
+          "cross tabulate passengerSex with passengerSurvival over passengerAge": "(function(x) {xtabs(passengerAge ~ passengerSex + passengerSurvival, data = x) })"
         }
     },
     "Raku":{
@@ -252,6 +264,25 @@
             "apply the following LSI term-weight functions: global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"": "apply-term-weight-functions(global-weight-function => 'IDF', local-weight-function => 'None', normalizer-function => 'Cosine')",
             "echo value": "echo-value()",
             "echo pipeline value with the function SumFunc, prefix note \"Stat:\"": "echo-value(\"Stat:\", as => &SumFunc)"
+        },
+        "DataReshaping": {
+            "load data wrangling package": "use Data::Reshapers; use Data::Summarizers; use Data::TypeSystem",
+            "use the dataset @dfTitanic": "my $obj = @dfTitanic",
+            "show dimensions": "say $obj.&dimensions",
+            "rename columns passengerAge as age, passengerSex as sex, passengerClass as class": "$obj = rename-columns($obj, %(passengerAge => 'age', passengerSex => 'sex', passengerClass => 'class'))",
+            "filter by passengerAge greater than 12": "$obj = $obj.grep({ $_{'passengerAge'} > 12 }).Array",
+            "group by passengerSex and passengerClass": "$obj = group-by($obj, ('passengerSex', 'passengerClass'))",
+            "show counts": "say $obj>>.elems",
+            "counts": "$obj = $obj>>.elems",
+            "cross tabulate passengerSex with passengerSurvival": "$obj = cross-tabulate($obj, 'passengerSex', 'passengerSurvival')",
+            "cross tabulate passengerSex with passengerSurvival over passengerAge": "$obj = cross-tabulate($obj, 'passengerSex', 'passengerSurvival', 'passengerAge')"
+        },
+        "TriesWithFrequencies": {
+            "Make a prefix tree (trie) with frequencies using word splitting over @words2": "$tr = trie-create-by-split(@words2)",
+            "Merge the trie with the another trie made over @words3": "$tr = trie-merge(trie-create-by-split(@words2))",
+            "Convert the node frequencies into probabilities": "$tr = trie-node-probabilities($tr)",
+            "Shrink the trie (i.e. find the \"prefixes\")": "$tr = trie-shrink($tr)",
+            "Show the tree-form of the trie": "trie-say($tr)"
         }
     }
 }
