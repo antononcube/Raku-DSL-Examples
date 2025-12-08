@@ -17,6 +17,15 @@ sub get-dsl-examples() {
     return %dsl-examples.clone;
 }
 
+my %dsl-workflow-separators;
+
+sub get-dsl-workflow-separators() {
+    if %dsl-workflow-separators.elems == 0 {
+        %dsl-workflow-separators = from-json(slurp(%?RESOURCES<dsl-workflow-separators.json>.IO))
+    }
+    return %dsl-workflow-separators.clone;
+}
+
 proto sub dsl-examples(|) is export {*}
 
 multi sub dsl-examples($lang = Whatever, $workflow = Whatever) {
@@ -42,4 +51,3 @@ multi sub dsl-examples(:l(:$lang) = Whatever, :w(:$workflow) = Whatever) {
         default { %res }
     }
 }
-
