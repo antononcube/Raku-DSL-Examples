@@ -1,0 +1,26 @@
+{
+  "Python": {
+    "SMRMon": "\n.",
+    "DataReshaping": "\n",
+    "LSAMon": "\n.",
+    "QRMon": "\n."
+  },
+  "R": {
+    "DataReshaping": "%>%\n",
+    "SMRMon": "%>%\n",
+    "LSAMon": "%>%\n",
+    "QRMon": "%>%\n"
+  },
+  "Raku": {
+    "SMRMon": "\n.",
+    "LSAMon": "\n.",
+    "DataReshaping": ";\n",
+    "QRMon": "\n."
+  },
+  "WL": {
+    "DataReshaping": ";\n",
+    "LSAMon": "⟹\n",
+    "SMRMon": "⟹\n",
+    "QRMon": "⟹\n"
+  }
+}
