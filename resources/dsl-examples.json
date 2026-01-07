@@ -91,8 +91,55 @@
             "apply the following LSI term-weight functions global weights by \"IDF\", local weights - \"None\", normalize with \"Cosine\"":"SMRMonApplyTermWeightFunctions[\"GlobalWeightFunction\" -> \"IDF\", \"LocalWeightFunction\" -> \"None\", \"NormalizerFunction\" -> \"Cosine\"]",
             "echo value":"SMRMonEchoValue[]",
             "echo pipeline value with the function SumFunc, prefix note \"Stat:\"":"SMRMonEchoFunctionValue[\"Stat:\", SumFunc]"
-		}
-	},
+		},
+        "DataReshaping": {
+          "load data wrangling package": "Needs[\"AntonAntonov`DataReshapers`\"]",
+          "load the CSV file ~/Downloads/data.CSV": "obj = Import[\"~/Downloads/data.CSV\",\"Dataset\"]",
+          "use the dataset dfTitanic": "obj = dfTitanic",
+          "show dimensions": "Echo[Dimensions[obj]]",
+          "summarize the data": "RecordsSummary[obj]",
+          "show data summary": "Echo[RecordsSummary[obj]]",
+          "drop the columns passengerAge and passengerSex": "obj = (KeyDrop[#1, {\"passengerAge\", \"passengerSex\"}]&) /@ obj",
+          "rename columns passengerAge as age, passengerSex as sex, passengerClass as class": "obj = (Join[KeyDrop[#1, {\"passengerAge\", \"passengerSex\", \"passengerClass\"}], Association[\"age\" -> #1[\"passengerAge\"], \"sex\" -> #1[\"passengerSex\"], \"class\" -> #1[\"passengerClass\"]]] &) /@ obj",
+          "filter by passengerAge greater than 12": "obj = Select[obj, #1[\"passengerAge\"] > 12 &]",
+          "group by passengerSex and passengerClass": "obj = GroupBy[obj, {#1[\"passengerSex\"], #1[\"passengerClass\"]} &];",
+          "show counts": "Echo[Length /@ obj, \"counts:\"]",
+          "counts": "obj = Length /@ obj",
+          "cross tabulate passengerSex with passengerSurvival": "obj = CrossTabulate[({#[\"passengerSex\"], #[\"passengerSurvival\"]} &) /@ obj]",
+          "cross tabulate passengerSex with passengerSurvival over passengerAge": "obj = CrossTabulate[({#[\"passengerSex\"], #[\"passengerSurvival\"], #[\"passengerAge\"]} &) /@ obj]"
+        },
+        "Tabular": {
+          "load the CSV file ~/Downloads/data.CSV": "obj = Import[\"~/Downloads/data.CSV\",\"Tabular\"]",
+          "use the dataset dfTitanic": "obj = Tabular[dfTitanic]",
+          "show dimensions": "Echo[Dimensions[obj]]",
+          "summarize the data": "obj = TabularStructure[obj]",
+          "show data summary": "Echo[TabularStructure[obj]]",
+          "show the columns of tblTrees": "ColumnKeys[tblTrees]",
+          "show the columns types of tblTrees": "ColumnType[tblTrees]",
+          "categorize the column passengerSex": "obj = CastColumns[obj, \"passengerSex\" -> \"Categorical\"]",
+          "drop the columns passengerAge and passengerSex": "obj = DeleteColumns[obj, {\"passengerAge\", \"passengerSex\"}]",
+          "rename columns passengerAge as age, passengerSex as sex, passengerClass as class": "obj = (Join[KeyDrop[#1, {\"passengerAge\", \"passengerSex\", \"passengerClass\"}], Association[\"age\" -> #1[\"passengerAge\"], \"sex\" -> #1[\"passengerSex\"], \"class\" -> #1[\"passengerClass\"]]] &) /@ obj",
+          "filter by passengerAge greater than 12": "obj = Select[obj, #1[\"passengerAge\"] > 12 &]",
+          "group by passengerSex and passengerClass": "obj = GroupBy[obj, {#1[\"passengerSex\"], #1[\"passengerClass\"]} &];",
+          "show aggregate values of (Mean @ #passengerAge) over the columns passengerSex and passengerSurvival": "Echo @ AggregateRows[obj, {\"mean\" -> (Mean @ #passengerAge] &)}, {\"passengerSex\",\n   \"passengerClass\"}]",
+          "show counts": "Echo[Length /@ obj, \"counts:\"]",
+          "counts": "obj = Length /@ obj",
+          "cross tabulate passenger_sex with passenger_survival": "obj = PivotTable[obj, Length @ #[\"passenger_sex\"] &, \"passenger_sex\", \"passenger_survival\"]",
+          "cross tabulate passengerSex with passengerSurvival over passengerAge": "obj = PivotTable[obj, Total@#passengerAge &, \"passengerSex\", \"passengerSurvival\"]",
+          "cross tabulate passengerSex with passengerSurvival and give group aggregates": "obj = PivotTable[obj, Length@#passengerSex &, \"passengerSex\", \"passengerSurvival\", \"IncludeGroupAggregates\" -> True]",
+          "keep only the rows for which passenger_class is 1st": "obj = Select[obj, #[\"passenger_class\"] == \"1st\"&]",
+          "filter out the rows that have passengerAge greater than 29": "obj = Discard[obj, #passengerAge > 29&]",
+          "sort descendingly by passengerAge": "obj = ReverseSortBy[obj, #passengerAge&]",
+          "sort by mass / height ^ 2": "obj = ReverseSortBy[obj, #mass / #height^2 &]",
+          "transform missing values by interpolation": "obj = TransformMissing[obj, Automatic -> \"Interpolation\"]",
+          "transform missing values of column VAR1 by using the mean": "obj = TransformMissing[obj, \"VAR1\" -> \"Mean\"]",
+          "transform missing of VAR1 the mean and of VAR23 with the median": "obj = TransformMissing[obj, {\"VAR1\" -> \"Mean\", \"VAR23\" -> \"Median\"}]",
+          "split the column name over PAT into the columns maker and model": "obj = TransformColumns[obj, {\"maker\", \"model\"} -> Function[StringSplit[#name, 2]]]",
+          "split the column name over PAT into the columns maker and model and drop name": "obj = TransformColumns[obj, {\"maker\", \"model\"} -> Function[StringSplit[#name, 2]], \"name\" -> Nothing]",
+          "combine the columns latitude and longitude with FUNC into the column geoLocation": "obj = TransformColumns[obj, \"geoLocation\" -> FUNC[#latitude, #longitude]]",
+          "combine the columns latitude and longitude of tblTrees using FUNC into the column geoLocation": "tblTrees = TransformColumns[tblTrees, \"geoLocation\" -> FUNC[#latitude, #longitude]]"
+        }
+    },
 	"Python":{
 		"QRMon":{
 			"load the package":"from Regressionizer import *",
@@ -278,6 +325,7 @@
             "cross tabulate passengerSex with passengerSurvival over passengerAge": "$obj = cross-tabulate($obj, 'passengerSex', 'passengerSurvival', 'passengerAge')"
         },
         "TriesWithFrequencies": {
+            "load tries with frequencies package": "use ML::TriesWithFrequencies;",
             "Make a prefix tree (trie) with frequencies using word splitting over @words2": "$tr = trie-create-by-split(@words2)",
             "Merge the trie with the another trie made over @words3": "$tr = trie-merge(trie-create-by-split(@words2))",
             "Convert the node frequencies into probabilities": "$tr = trie-node-probabilities($tr)",
