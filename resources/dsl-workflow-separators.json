@@ -1,26 +1,30 @@
 {
   "Python": {
-    "SMRMon": "\n.",
     "DataReshaping": "\n",
     "LSAMon": "\n.",
-    "QRMon": "\n."
+    "QRMon": "\n.",
+    "SMRMon": "\n.",
+    "pandas": "\n"
   },
   "R": {
     "DataReshaping": "%>%\n",
-    "SMRMon": "%>%\n",
     "LSAMon": "%>%\n",
-    "QRMon": "%>%\n"
+    "QRMon": "%>%\n",
+    "SMRMon": "%>%\n"
   },
   "Raku": {
-    "SMRMon": "\n.",
-    "LSAMon": "\n.",
     "DataReshaping": ";\n",
-    "QRMon": "\n."
+    "LSAMon": "\n.",
+    "QRMon": "\n.",
+    "SMRMon": "\n.",
+    "TriesWithFrequencies": ";\n"
   },
   "WL": {
     "DataReshaping": ";\n",
     "LSAMon": "⟹\n",
+    "QRMon": "⟹\n",
     "SMRMon": "⟹\n",
-    "QRMon": "⟹\n"
+    "Tabular": ";\n",
+    "TriesWithFrequencies": ";\n"
   }
 }
