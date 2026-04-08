@@ -1,0 +1,7 @@
+Revision updates of the Raku package "DSL::Examples"
+
+0.0.4 2026-04-08
+    - Added examples of
+        - TriesWithFrequencies for Raku and Wolfram Language
+        - pandas for Python
+        - Tabular for Wolfram Language
