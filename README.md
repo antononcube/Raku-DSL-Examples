@@ -47,7 +47,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 23)]), 3), Assoc(Atom((Str)), Assoc(Atom((Str)), Atom((Str)), 20), 1)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 10)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 27)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15)]), 4)]), 4)
 ```
 
 Tabulate all languages and available workflow examples:
@@ -58,7 +58,7 @@ dsl-examples().map({ $_.key X $_.value.keys }).flat(1).map({ <language workflow>
 ==> to-dataset()
 ==> to-html(field-names => <language workflow>)
 ```
-<table border="1"><thead><tr><th>language</th><th>workflow</th></tr></thead><tbody><tr><td>Python</td><td>LSAMon</td></tr><tr><td>Python</td><td>QRMon</td></tr><tr><td>Python</td><td>SMRMon</td></tr><tr><td>R</td><td>LSAMon</td></tr><tr><td>R</td><td>QRMon</td></tr><tr><td>R</td><td>SMRMon</td></tr><tr><td>Raku</td><td>SMRMon</td></tr><tr><td>WL</td><td>ClCon</td></tr><tr><td>WL</td><td>LSAMon</td></tr><tr><td>WL</td><td>QRMon</td></tr><tr><td>WL</td><td>SMRMon</td></tr></tbody></table>
+<table border="1"><thead><tr><th>language</th><th>workflow</th></tr></thead><tbody><tr><td>Python</td><td>LSAMon</td></tr><tr><td>Python</td><td>QRMon</td></tr><tr><td>Python</td><td>SMRMon</td></tr><tr><td>Python</td><td>pandas</td></tr><tr><td>R</td><td>DataReshaping</td></tr><tr><td>R</td><td>LSAMon</td></tr><tr><td>R</td><td>QRMon</td></tr><tr><td>R</td><td>SMRMon</td></tr><tr><td>Raku</td><td>DataReshaping</td></tr><tr><td>Raku</td><td>SMRMon</td></tr><tr><td>Raku</td><td>TriesWithFrequencies</td></tr><tr><td>WL</td><td>ClCon</td></tr><tr><td>WL</td><td>DataReshaping</td></tr><tr><td>WL</td><td>LSAMon</td></tr><tr><td>WL</td><td>QRMon</td></tr><tr><td>WL</td><td>SMRMon</td></tr><tr><td>WL</td><td>Tabular</td></tr><tr><td>WL</td><td>TriesWithFrequencies</td></tr></tbody></table>
 
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
@@ -78,7 +78,7 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 ```
-# LLM::Function(-> **@args, *%args { #`(Block|4301755332504) ... }, 'chatgpt')
+# LLM::Function(-> **@args, *%args { #`(Block|4595368756712) ... }, 'chatgpt')
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -98,7 +98,7 @@ my @commands =
 ```
 # LSAMonUnit[aAbstracts]⟹
 # LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
