@@ -47,7 +47,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 10)]), 3), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 27)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15)]), 4)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 32)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 10)]), 3)]), 4)
 ```
 
 Tabulate all languages and available workflow examples:
@@ -78,7 +78,7 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 ```
-# LLM::Function(-> **@args, *%args { #`(Block|4595368756712) ... }, 'chatgpt')
+# LLM::Function(-> **@args, *%args { #`(Block|3817446106192) ... }, 'chatgpt')
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -98,8 +98,29 @@ my @commands =
 ```
 # LSAMonUnit[aAbstracts]⟹
 # LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40, Method -> "NNMF"]⟹
 # LSAMonEchoTopicsTable[]
+```
+
+-----
+
+## CLI 
+
+The package provides the Command Line Interface (CLI) script `dsl-examples`. Here is its usage message:
+
+```shell
+dsl-examples --help
+```
+```
+# Usage:
+#   dsl-examples [<lang>] [<workflow>] [-f|--format=<Str>] -- Give DSL examples for specified language and workflow.
+#   dsl-examples [-l|--lang=<Str>] [-w|--workflow=<Str>] [-f|--format=<Str>]
+#   
+#     [<lang>]               Language. [default: 'Whatever']
+#     [<workflow>]           Workflow. [default: 'Whatever']
+#     -f|--format=<Str>      Format of the result, one of "json" or "raku". [default: 'json']
+#     -l|--lang=<Str>        Language. [default: 'Whatever']
+#     -w|--workflow=<Str>    Workflow. [default: 'Whatever']
 ```
 
 -----

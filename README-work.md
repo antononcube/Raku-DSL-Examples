@@ -87,6 +87,16 @@ my @commands =
 
 -----
 
+## CLI 
+
+The package provides the Command Line Interface (CLI) script `dsl-examples`. Here is its usage message:
+
+```shell
+dsl-examples --help
+```
+
+-----
+
 ## References
 
 ### Packages
