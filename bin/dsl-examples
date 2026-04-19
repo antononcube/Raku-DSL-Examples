@@ -1,0 +1,34 @@
+#!/usr/bin/env raku
+use v6.d;
+
+use DSL::Examples;
+use JSON::Fast;
+
+my %*SUB-MAIN-OPTS = :named-anywhere;
+
+#| Give DSL examples for specified language and workflow.
+multi sub MAIN(
+        Str:D $lang = 'Whatever',     #= Language.
+        Str:D $workflow = 'Whatever', #= Workflow.
+        Str:D :f(:$format) = 'json',  #= Format of the result, one of "json" or "raku".
+               ) {
+    MAIN(:$lang, :$workflow, :$format)
+}
+
+multi sub MAIN(
+        Str:D :l(:$lang) = 'Whatever',     #= Language.
+        Str:D :w(:$workflow) = 'Whatever', #= Workflow.
+        Str:D :f(:$format) = 'json',      #= Format of the result, one of "json" or "raku".
+               ) {
+    my $langLocal = $lang.lc ∈ <whatever auto automatic> ?? Whatever !! $lang.tc;
+    my $workflowLocal = $workflow.lc ∈ <whatever auto automatic> ?? Whatever !! $workflow;
+    my $res = dsl-examples(lang => $langLocal, workflow => $workflowLocal);
+    given $format.lc {
+        when $_ eq 'json' { say to-json($res) }
+        when $_ eq 'raku' { say $res.raku }
+        default {
+            note 'Unknown format.';
+            say $res
+        }
+    }
+}
