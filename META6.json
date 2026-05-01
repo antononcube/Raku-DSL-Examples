@@ -1,7 +1,7 @@
 {
     "name": "DSL::Examples",
     "description": "Raku data package with examples of DSL commands translations to programming code. (Suitable for LLM training.)",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "raku": "v6.d",
     "authors": [
         "Anton Antonov"
