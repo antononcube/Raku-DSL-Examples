@@ -35,21 +35,23 @@ sub dsl-retrieve(:$lang = Whatever, :$workflow = Whatever, :%dsl-data!) {
 #==========================================================
 my %dsl-examples;
 
-sub get-dsl-examples() {
-    if %dsl-examples.elems == 0 {
-        %dsl-examples = from-json(slurp(%?RESOURCES<dsl-examples.json>.IO))
+sub get-dsl-examples($from = 'English') {
+    if %dsl-examples{$from}:!exists {
+        my $file = "dsl-examples-{$from.lc}.json";
+        note (:$file);
+        %dsl-examples{$from} = from-json(slurp(%?RESOURCES{$file}.IO))
     }
-    return %dsl-examples.clone;
+    return %dsl-examples{$from}.clone;
 }
 
 proto sub dsl-examples(|) is export {*}
 
-multi sub dsl-examples($lang = Whatever, $workflow = Whatever) {
-    return dsl-examples(:$lang, :$workflow);
+multi sub dsl-examples($lang = Whatever, $workflow = Whatever, Str:D $from = 'English') {
+    return dsl-examples(:$lang, :$workflow, :$from);
 }
 
-multi sub dsl-examples(:l(:$lang) = Whatever, :w(:$workflow) = Whatever) {
-    my %dsl-data = get-dsl-examples();
+multi sub dsl-examples(:to(:l(:$lang)) = Whatever, :w(:$workflow) = Whatever, Str:D :$from = 'English') {
+    my %dsl-data = get-dsl-examples($from);
     return dsl-retrieve(:$lang, :$workflow, :%dsl-data);
 }
 
@@ -71,7 +73,7 @@ multi sub dsl-workflow-separators($lang = Whatever, $workflow = Whatever) {
     return dsl-workflow-separators(:$lang, :$workflow);
 }
 
-multi sub dsl-workflow-separators(:l(:$lang) = Whatever, :w(:$workflow) = Whatever) {
+multi sub dsl-workflow-separators(:to(:l(:$lang)) = Whatever, :w(:$workflow) = Whatever) {
     my %dsl-data = get-dsl-workflow-separators();
     return dsl-retrieve(:$lang, :$workflow, :%dsl-data);
 }
