@@ -38,7 +38,6 @@ my %dsl-examples;
 sub get-dsl-examples($from = 'English') {
     if %dsl-examples{$from}:!exists {
         my $file = "dsl-examples-{$from.lc}.json";
-        note (:$file);
         %dsl-examples{$from} = from-json(slurp(%?RESOURCES{$file}.IO))
     }
     return %dsl-examples{$from}.clone;
