@@ -5,8 +5,8 @@ use DSL::Examples;
 use LLM::Functions;
 use ML::FindTextualAnswer;
 
-# I want to have those functions am not that willing to have a dependency on "LLM::Functions" in "DSL::Examples".
-# So, maybe it is better if these functions are in "ML::TemplateEngine".
+# I want to have those functions, but am not that willing to have a dependency on "LLM::Functions" in "DSL::Examples".
+# So, these functions are in "LLM::Resources".
 
 # Natural language labels to be understood by LLMs
 my @mlLabels =
