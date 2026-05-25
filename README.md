@@ -1,6 +1,6 @@
 # DSL::Examples
 
-Raku data package with examples of DSL commands translations to programming code. (
+Raku data package with examples of DSL commands translations to programming code.
 
 The DSL examples are suitable for 
 [LLM few-shot training](https://www.prompthub.us/blog/the-few-shot-prompting-guide). 
@@ -49,7 +49,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 17)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6)]), 4)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 6)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6)]), 4)]), 4)
 ```
 
 Tabulate all translation languages and available workflow examples:
@@ -64,7 +64,7 @@ dsl-examples(from => 'English').map({ $_.key X $_.value.keys }).flat(1).map({ <l
 
 
 Note in `dsl-examples` the language to translate from is specified.
-Currently, the package has DSL examples for Bulgarian and English (being from-languages.)  
+Currently, the package has DSL examples for Bulgarian, English, and Russian (being from-languages.)  
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
@@ -81,9 +81,6 @@ Make an LLM example function for translation of LSA workflow building commands:
 ```raku
 use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
-```
-```
-# LLM::Function(-> **@args, *%args { #`(Block|5780390650800) ... }, 'chatgpt')
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -102,7 +99,7 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules" -> {}, "StopWords" -> Automatic]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
 # LSAMonExtractTopics["NumberOfTopics" -> 40, Method -> "NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
@@ -125,8 +122,8 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-#  LSAMonMakeDocumentTermMatrix["StemmingRules"->{}]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules"->{}]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
@@ -158,10 +155,10 @@ dsl-examples --help
 
 There are several ways to organize the DSL examples with respect to the from-languages:
 
-| Type                                                                                   | Comment                                                | Currently used                | 
-|----------------------------------------------------------------------------------------|--------------------------------------------------------|-------------------------------|
-| Have a separate file for each from-langauge                                            | Convenient editing and refinement                      | Yes                           |
-| One file of all examples; from-langauge is a key for each workflow                     | Can be produces with the separate files                | No                            |
+| Type                                                                                   | Comment                                                | Currently used                      | 
+|----------------------------------------------------------------------------------------|--------------------------------------------------------|-------------------------------------|
+| Have a separate file for each from-langauge                                            | Convenient editing and refinement                      | Yes                                 |
+| One file of all examples; from-langauge is a key for each workflow                     | Can be produces with the separate files                | No                                  |
 | Keep English-only DSL examples and use dictionaries of command translations to English | Does not train the LLM directly with the from-language | Dictionaries are kept for reference |
 
 

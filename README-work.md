@@ -1,6 +1,6 @@
 # DSL::Examples
 
-Raku data package with examples of DSL commands translations to programming code. (
+Raku data package with examples of DSL commands translations to programming code.
 
 The DSL examples are suitable for 
 [LLM few-shot training](https://www.prompthub.us/blog/the-few-shot-prompting-guide). 
@@ -59,7 +59,7 @@ dsl-examples(from => 'English').map({ $_.key X $_.value.keys }).flat(1).map({ <l
 ```
 
 Note in `dsl-examples` the language to translate from is specified.
-Currently, the package has DSL examples for Bulgarian and English (being from-languages.)  
+Currently, the package has DSL examples for Bulgarian, English, and Russian (being from-languages.)  
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
