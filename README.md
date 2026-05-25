@@ -49,7 +49,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 6)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6)]), 4)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 15)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 17)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 20)]), 4)]), 4)
 ```
 
 Tabulate all translation languages and available workflow examples:
@@ -64,7 +64,7 @@ dsl-examples(from => 'English').map({ $_.key X $_.value.keys }).flat(1).map({ <l
 
 
 Note in `dsl-examples` the language to translate from is specified.
-Currently, the package has DSL examples for Bulgarian, English, and Russian (being from-languages.)  
+Currently, the package has DSL examples for Bulgarian, English, Portuguese, and Russian (being from-languages.)  
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
@@ -99,8 +99,8 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
-# LSAMonExtractTopics["NumberOfTopics" -> 40, Method -> "NNMF"]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules" -> {}, "StopWords" -> Automatic]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
@@ -123,7 +123,7 @@ my @commands =
 ```
 # LSAMonUnit[aAbstracts]⟹
 # LSAMonMakeDocumentTermMatrix["StemmingRules"->{}]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
@@ -161,6 +161,8 @@ There are several ways to organize the DSL examples with respect to the from-lan
 | One file of all examples; from-langauge is a key for each workflow                     | Can be produces with the separate files                | No                                  |
 | Keep English-only DSL examples and use dictionaries of command translations to English | Does not train the LLM directly with the from-language | Dictionaries are kept for reference |
 
+See the Jupyter notebook ["DSL-examples-dev.ipynb"](./docs/DSL-examples-dev.ipynb) with a translation workflow of the English DSL examples to other languages.
+
 
 -----
 
@@ -169,22 +171,22 @@ There are several ways to organize the DSL examples with respect to the from-lan
 ### Packages
 
 [AAp1] Anton Antonov,
-[DSL::Translators Raku package](https://github.com/antononcube/Raku-DSL-Translators),
+[DSL::Translators, Raku package](https://github.com/antononcube/Raku-DSL-Translators),
 (2020-2024),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAp2] Anton Antonov,
-[LLM::Functions Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
+[LLM::Functions, Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
 (2023-2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAp3] Anton Antonov,
-[LLM::Prompts Raku package](https://github.com/antononcube/Raku-LLM-Prompts), 
+[LLM::Prompts, Raku package](https://github.com/antononcube/Raku-LLM-Prompts), 
 (2023-2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAp4] Anton Antonov,
-[LLM::Resources Raku package](https://github.com/antononcube/Raku-LLM-Resources),
+[LLM::Resources, Raku package](https://github.com/antononcube/Raku-LLM-Resources),
 (2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
