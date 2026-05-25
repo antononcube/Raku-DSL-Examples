@@ -35,11 +35,20 @@ sub dsl-retrieve(:$lang = Whatever, :$workflow = Whatever, :%dsl-data!) {
 #==========================================================
 my %dsl-examples;
 
-sub get-dsl-examples($from = 'English') {
+sub get-dsl-examples($from is copy = 'English') {
+    my @known-from-languages = <bulgarian english>;
+
+    # Make examples with all language
+    # if $from.isa(Whatever) { }
+
+    die "Unknown language to translate from. Known languages are {@known-from-languages.join(', ')}."
+    unless $from ~~ Str:D && $from.lc ∈ @known-from-languages;
+
     if %dsl-examples{$from}:!exists {
         my $file = "dsl-examples-{$from.lc}.json";
         %dsl-examples{$from} = from-json(slurp(%?RESOURCES{$file}.IO))
     }
+
     return %dsl-examples{$from}.clone;
 }
 
