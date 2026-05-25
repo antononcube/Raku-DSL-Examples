@@ -1,7 +1,7 @@
 {
     "name": "DSL::Examples",
     "description": "Raku data package with examples of DSL commands translations to programming code. (Suitable for LLM training.)",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "raku": "v6.d",
     "authors": [
         "Anton Antonov"
@@ -17,6 +17,7 @@
     "resources": [
         "dsl-examples-bulgarian.json",
         "dsl-examples-english.json",
+        "dsl-examples-portuguese.json",
         "dsl-examples-russian.json",
         "dsl-workflow-separators.json"
     ],
