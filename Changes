@@ -1,10 +1,15 @@
 Revision updates of the Raku package "DSL::Examples"
 
+0.0.7 2026-05-25
+    - Translated the English set of example from-commands to (Brazilian) Portuguese.
+    - Updated the basic usage example script.
+    - Added Jupyter notebook with translation workflow of the English DSL examples to other languages.
+
 0.0.6 2026-05-24
     - Added Raku LSAMon examples.
         - Fix:Corrected code in the Python LSAMon examples.
     - Translation-example from different languages, not just English.
-    - Translated the English set of example from-commands to Bulgarian.
+    - Translated the English set of example from-commands to Bulgarian and Russian.
 
 0.0.5 2026-04-19
     - Implemented the CLI script dsl-examples.
