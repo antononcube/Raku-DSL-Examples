@@ -40,28 +40,28 @@ my %commands =
                 "Give a date plot for the outliers with aspect ratio 1/3 and image size 1000"
         ],
         Portuguese => [
-            "Use a série temporal dfTemperatureData",
-            "Exiba o resumo dos dados",
-            "Faça regressão quantílica com 20 nós e probabilidades: 0.03, 0.5, 0.97",
-            "Use \{laranja, azul, laranja\} para plotar as curvas de regressão",
-            "Use cinza para plotar os dados",
-            "Gráfico de data com proporção de aspecto 1/3 e tamanho da imagem 1000",
-            "Exiba o gráfico de erro com erros absolutos",
-            "Use cinza claro, vermelho e vermelho para plotar os dados",
-            "Use preto para plotar as curvas de regressão",
-            "Exiba um gráfico de data para os outliers com proporção de aspecto 1/3 e tamanho da imagem 1000"
+                "Use a série temporal dfTemperatureData",
+                "Exiba o resumo dos dados",
+                "Faça regressão quantílica com 20 nós e probabilidades: 0.03, 0.5, 0.97",
+                "Use \{laranja, azul, laranja\} para plotar as curvas de regressão",
+                "Use cinza para plotar os dados",
+                "Gráfico de data com proporção de aspecto 1/3 e tamanho da imagem 1000",
+                "Exiba o gráfico de erro com erros absolutos",
+                "Use cinza claro, vermelho e vermelho para plotar os dados",
+                "Use preto para plotar as curvas de regressão",
+                "Exiba um gráfico de data para os outliers com proporção de aspecto 1/3 e tamanho da imagem 1000"
         ],
         Russian => [
-            "Используй временной ряд dfTemperatureData",
-            "Выведи сводку данных",
-            "Выполни квантильную регрессию с 20 узлами и вероятностями: 0.03, 0.5, 0.97",
-            "Используй \{оранжевый, синий, оранжевый\} для построения кривых регрессии",
-            "Используй серый для построения данных",
-            "Диаграмма по дате с соотношением сторон 1/3 и размером изображения 1000",
-            "Построй график ошибок с абсолютными ошибками",
-            "Используй светло-серый, красный и красный для построения данных",
-            "Используй черный для построения кривых регрессии",
-            "Построй диаграмму по дате для выбросов с соотношением сторон 1/3 и размером изображения 1000"
+                "Используй временной ряд dfTemperatureData",
+                "Выведи сводку данных",
+                "Выполни квантильную регрессию с 20 узлами и вероятностями: 0.03, 0.5, 0.97",
+                "Используй \{оранжевый, синий, оранжевый\} для построения кривых регрессии",
+                "Используй серый для построения данных",
+                "Диаграмма по дате с соотношением сторон 1/3 и размером изображения 1000",
+                "Построй график ошибок с абсолютными ошибками",
+                "Используй светло-серый, красный и красный для построения данных",
+                "Используй черный для построения кривых регрессии",
+                "Построй диаграмму по дате для выбросов с соотношением сторон 1/3 и размером изображения 1000"
         ]
         ;
 
