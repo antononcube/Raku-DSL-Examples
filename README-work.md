@@ -47,14 +47,17 @@ dsl-examples()
     ==> deduce-type()
 ```
 
-Tabulate all languages and available workflow examples:
+Tabulate all translation languages and available workflow examples:
 
 ```raku, results=asis
 use Data::Translators;
-dsl-examples().map({ $_.key X $_.value.keys }).flat(1).map({ <language workflow> Z=> $_ })».Hash.sort.Array
+dsl-examples(from => 'English').map({ $_.key X $_.value.keys }).flat(1).map({ <language workflow> Z=> $_ })».Hash.sort.Array
 ==> to-dataset()
 ==> to-html(field-names => <language workflow>)
 ```
+
+Note in `dsl-examples` the language to translate from is specified.
+Currently, the package has DSL examples for Bulgarian and English (being from-languages.)  
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
@@ -85,6 +88,23 @@ my @commands =
 .join("⟹\n")
 ```
 
+Same workflow specified in Bulgarian:
+
+```raku
+my &llm-pipeline-segment-bg = llm-example-function(dsl-examples(from => 'Bulgarian')<WL><LSAMon>);
+
+my @commands = 
+"използавай данните aAbstracts",
+"направи документ-терм матрицата без да използаваш стъблата на думите",
+"намери 40 теми ползвайки методата не-отрицателна матрична факторизация",
+"покажи темите";
+
+@commands
+.map({ .&llm-pipeline-segment-bg })
+.map({ .subst(/:i Output ':'?/):g })
+.join("⟹\n")
+```
+
 -----
 
 ## CLI 
@@ -108,12 +128,17 @@ dsl-examples --help
 
 [AAp2] Anton Antonov,
 [LLM::Functions Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
-(2023-2024),
+(2023-2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAp3] Anton Antonov,
 [LLM::Prompts Raku package](https://github.com/antononcube/Raku-LLM-Prompts), 
-(2023-2024),
+(2023-2026),
+[GitHub/antononcube](https://github.com/antononcube).
+
+[AAp4] Anton Antonov,
+[LLM::Resources Raku package](https://github.com/antononcube/Raku-LLM-Resources),
+(2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
 ### Videos

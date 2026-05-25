@@ -47,19 +47,22 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 32)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 10)]), 3)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33)]), 4)]), 4)
 ```
 
-Tabulate all languages and available workflow examples:
+Tabulate all translation languages and available workflow examples:
 
 ```raku, results=asis
 use Data::Translators;
-dsl-examples().map({ $_.key X $_.value.keys }).flat(1).map({ <language workflow> Z=> $_ })».Hash.sort.Array
+dsl-examples(from => 'English').map({ $_.key X $_.value.keys }).flat(1).map({ <language workflow> Z=> $_ })».Hash.sort.Array
 ==> to-dataset()
 ==> to-html(field-names => <language workflow>)
 ```
-<table border="1"><thead><tr><th>language</th><th>workflow</th></tr></thead><tbody><tr><td>Python</td><td>LSAMon</td></tr><tr><td>Python</td><td>QRMon</td></tr><tr><td>Python</td><td>SMRMon</td></tr><tr><td>Python</td><td>pandas</td></tr><tr><td>R</td><td>DataReshaping</td></tr><tr><td>R</td><td>LSAMon</td></tr><tr><td>R</td><td>QRMon</td></tr><tr><td>R</td><td>SMRMon</td></tr><tr><td>Raku</td><td>DataReshaping</td></tr><tr><td>Raku</td><td>SMRMon</td></tr><tr><td>Raku</td><td>TriesWithFrequencies</td></tr><tr><td>WL</td><td>ClCon</td></tr><tr><td>WL</td><td>DataReshaping</td></tr><tr><td>WL</td><td>LSAMon</td></tr><tr><td>WL</td><td>QRMon</td></tr><tr><td>WL</td><td>SMRMon</td></tr><tr><td>WL</td><td>Tabular</td></tr><tr><td>WL</td><td>TriesWithFrequencies</td></tr></tbody></table>
+<table border="1"><thead><tr><th>language</th><th>workflow</th></tr></thead><tbody><tr><td>Python</td><td>LSAMon</td></tr><tr><td>Python</td><td>QRMon</td></tr><tr><td>Python</td><td>SMRMon</td></tr><tr><td>Python</td><td>pandas</td></tr><tr><td>R</td><td>DataReshaping</td></tr><tr><td>R</td><td>LSAMon</td></tr><tr><td>R</td><td>QRMon</td></tr><tr><td>R</td><td>SMRMon</td></tr><tr><td>Raku</td><td>DataReshaping</td></tr><tr><td>Raku</td><td>LSAMon</td></tr><tr><td>Raku</td><td>SMRMon</td></tr><tr><td>Raku</td><td>TriesWithFrequencies</td></tr><tr><td>WL</td><td>ClCon</td></tr><tr><td>WL</td><td>DataReshaping</td></tr><tr><td>WL</td><td>LSAMon</td></tr><tr><td>WL</td><td>QRMon</td></tr><tr><td>WL</td><td>SMRMon</td></tr><tr><td>WL</td><td>Tabular</td></tr><tr><td>WL</td><td>TriesWithFrequencies</td></tr></tbody></table>
 
+
+Note in `dsl-examples` the language to translate from is specified.
+Currently, the package has DSL examples for Bulgarian and English (being from-languages.)  
 
 Get the examples for Latent Semantic Analysis (**LSA**) **Mon**adic pipeline segments in Python:
 
@@ -78,7 +81,7 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 ```
-# LLM::Function(-> **@args, *%args { #`(Block|3817446106192) ... }, 'chatgpt')
+# LLM::Function(-> **@args, *%args { #`(Block|5754721121560) ... }, 'chatgpt')
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -98,6 +101,29 @@ my @commands =
 ```
 # LSAMonUnit[aAbstracts]⟹
 # LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
+# LSAMonEchoTopicsTable[]
+```
+
+Same workflow specified in Bulgarian:
+
+```raku
+my &llm-pipeline-segment-bg = llm-example-function(dsl-examples(from => 'Bulgarian')<WL><LSAMon>);
+
+my @commands = 
+"използавай данните aAbstracts",
+"направи документ-терм матрицата без да използаваш стъблата на думите",
+"намери 40 теми ползвайки методата не-отрицателна матрична факторизация",
+"покажи темите";
+
+@commands
+.map({ .&llm-pipeline-segment-bg })
+.map({ .subst(/:i Output ':'?/):g })
+.join("⟹\n")
+```
+```
+# LSAMonUnit[aAbstracts]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules" -> {}, "StopWords" -> Automatic]⟹
 # LSAMonExtractTopics["NumberOfTopics"->40, Method -> "NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
@@ -136,12 +162,17 @@ dsl-examples --help
 
 [AAp2] Anton Antonov,
 [LLM::Functions Raku package](https://github.com/antononcube/Raku-LLM-Functions), 
-(2023-2024),
+(2023-2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
 [AAp3] Anton Antonov,
 [LLM::Prompts Raku package](https://github.com/antononcube/Raku-LLM-Prompts), 
-(2023-2024),
+(2023-2026),
+[GitHub/antononcube](https://github.com/antononcube).
+
+[AAp4] Anton Antonov,
+[LLM::Resources Raku package](https://github.com/antononcube/Raku-LLM-Resources),
+(2026),
 [GitHub/antononcube](https://github.com/antononcube).
 
 ### Videos
