@@ -15,7 +15,9 @@ Also in the presentation ["Robust LLM pipelines (Mathematica, Python, Raku)"](ht
 
 Similar translations -- with much less computational resources -- are achieved with 
 grammar-based DSL translators; see 
-["DSL::Translators"](https://github.com/antononcube/Raku-DSL-Translators), [AAp1].
+["DSL::Translators"](https://github.com/antononcube/Raku-DSL-Translators), [AAp1]. The package 
+["LLM::Resources"](https://github.com/antononcube/Raku-LLM-Resources), [AAp4], has LLM-graphs 
+for code generation that utilize the DSL examples of this package.
 
 -----
 
@@ -47,7 +49,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33)]), 4)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 33)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 17)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6)]), 4)]), 4)
 ```
 
 Tabulate all translation languages and available workflow examples:
@@ -81,7 +83,7 @@ use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
 ```
-# LLM::Function(-> **@args, *%args { #`(Block|5754721121560) ... }, 'chatgpt')
+# LLM::Function(-> **@args, *%args { #`(Block|5780390650800) ... }, 'chatgpt')
 ```
 
 Run the LLM function over a list of DSL commands: 
@@ -100,8 +102,8 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules" -> {}, "StopWords" -> Automatic]⟹
+# LSAMonExtractTopics["NumberOfTopics" -> 40, Method -> "NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
@@ -123,8 +125,8 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules" -> {}, "StopWords" -> Automatic]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40, Method -> "NNMF"]⟹
+#  LSAMonMakeDocumentTermMatrix["StemmingRules"->{}]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
@@ -139,15 +141,29 @@ dsl-examples --help
 ```
 ```
 # Usage:
-#   dsl-examples [<lang>] [<workflow>] [-f|--format=<Str>] -- Give DSL examples for specified language and workflow.
-#   dsl-examples [-l|--lang=<Str>] [-w|--workflow=<Str>] [-f|--format=<Str>]
+#   dsl-examples [<lang>] [<workflow>] [--from|--from-lang=<Str>] [-f|--format=<Str>] -- Give DSL examples for specified language and workflow.
+#   dsl-examples [-l|--to|--lang=<Str>] [-w|--workflow=<Str>] [--from|--from-lang=<Str>] [-f|--format=<Str>]
 #   
-#     [<lang>]               Language. [default: 'Whatever']
-#     [<workflow>]           Workflow. [default: 'Whatever']
-#     -f|--format=<Str>      Format of the result, one of "json" or "raku". [default: 'json']
-#     -l|--lang=<Str>        Language. [default: 'Whatever']
-#     -w|--workflow=<Str>    Workflow. [default: 'Whatever']
+#     [<lang>]                    Language. [default: 'Whatever']
+#     [<workflow>]                Workflow. [default: 'Whatever']
+#     --from|--from-lang=<Str>    Language to translate from. [default: 'English']
+#     -f|--format=<Str>           Format of the result, one of "json" or "raku". [default: 'json']
+#     -l|--to|--lang=<Str>        Language. [default: 'Whatever']
+#     -w|--workflow=<Str>         Workflow. [default: 'Whatever']
 ```
+
+-----
+
+## Implementation details
+
+There are several ways to organize the DSL examples with respect to the from-languages:
+
+| Type                                                                                   | Comment                                                | Currently used                | 
+|----------------------------------------------------------------------------------------|--------------------------------------------------------|-------------------------------|
+| Have a separate file for each from-langauge                                            | Convenient editing and refinement                      | Yes                           |
+| One file of all examples; from-langauge is a key for each workflow                     | Can be produces with the separate files                | No                            |
+| Keep English-only DSL examples and use dictionaries of command translations to English | Does not train the LLM directly with the from-language | Dictionaries are kept for reference |
+
 
 -----
 

@@ -15,7 +15,9 @@ Also in the presentation ["Robust LLM pipelines (Mathematica, Python, Raku)"](ht
 
 Similar translations -- with much less computational resources -- are achieved with 
 grammar-based DSL translators; see 
-["DSL::Translators"](https://github.com/antononcube/Raku-DSL-Translators), [AAp1].
+["DSL::Translators"](https://github.com/antononcube/Raku-DSL-Translators), [AAp1]. The package 
+["LLM::Resources"](https://github.com/antononcube/Raku-LLM-Resources), [AAp4], has LLM-graphs 
+for code generation that utilize the DSL examples of this package.
 
 -----
 
@@ -114,6 +116,19 @@ The package provides the Command Line Interface (CLI) script `dsl-examples`. Her
 ```shell
 dsl-examples --help
 ```
+
+-----
+
+## Implementation details
+
+There are several ways to organize the DSL examples with respect to the from-languages:
+
+| Type                                                                                   | Comment                                                | Currently used                      | 
+|----------------------------------------------------------------------------------------|--------------------------------------------------------|-------------------------------------|
+| Have a separate file for each from-langauge                                            | Convenient editing and refinement                      | Yes                                 |
+| One file of all examples; from-langauge is a key for each workflow                     | Can be produces with the separate files                | No                                  |
+| Keep English-only DSL examples and use dictionaries of command translations to English | Does not train the LLM directly with the from-language | Dictionaries are kept for reference |
+
 
 -----
 
