@@ -36,7 +36,7 @@ sub dsl-retrieve(:$lang = Whatever, :$workflow = Whatever, :%dsl-data!) {
 my %dsl-examples;
 
 sub get-dsl-examples($from is copy = 'English') {
-    my @known-from-languages = <bulgarian english>;
+    my @known-from-languages = <bulgarian english russian>;
 
     # Make examples with all language
     # if $from.isa(Whatever) { }
