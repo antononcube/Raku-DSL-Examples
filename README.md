@@ -49,7 +49,7 @@ dsl-examples()
     ==> deduce-type()
 ```
 ```
-# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 15)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 17)]), 7), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 10)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 20)]), 4)]), 4)
+# Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 26), Assoc(Atom((Str)), Atom((Str)), 10), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 25), Assoc(Atom((Str)), Atom((Str)), 10)]), 5), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 33), Assoc(Atom((Str)), Atom((Str)), 15), Assoc(Atom((Str)), Atom((Str)), 23), Assoc(Atom((Str)), Atom((Str)), 20)]), 4), Assoc(Atom((Str)), Tuple([Assoc(Atom((Str)), Atom((Str)), 14), Assoc(Atom((Str)), Atom((Str)), 17), Assoc(Atom((Str)), Atom((Str)), 20), Assoc(Atom((Str)), Atom((Str)), 27), Assoc(Atom((Str)), Atom((Str)), 6), Assoc(Atom((Str)), Atom((Str)), 32), Assoc(Atom((Str)), Atom((Str)), 20)]), 7)]), 4)
 ```
 
 Tabulate all translation languages and available workflow examples:
@@ -60,7 +60,7 @@ dsl-examples(from => 'English').map({ $_.key X $_.value.keys }).flat(1).map({ <l
 ==> to-dataset()
 ==> to-html(field-names => <language workflow>)
 ```
-<table border="1"><thead><tr><th>language</th><th>workflow</th></tr></thead><tbody><tr><td>Python</td><td>LSAMon</td></tr><tr><td>Python</td><td>QRMon</td></tr><tr><td>Python</td><td>SMRMon</td></tr><tr><td>Python</td><td>pandas</td></tr><tr><td>R</td><td>DataReshaping</td></tr><tr><td>R</td><td>LSAMon</td></tr><tr><td>R</td><td>QRMon</td></tr><tr><td>R</td><td>SMRMon</td></tr><tr><td>Raku</td><td>DataReshaping</td></tr><tr><td>Raku</td><td>LSAMon</td></tr><tr><td>Raku</td><td>SMRMon</td></tr><tr><td>Raku</td><td>TriesWithFrequencies</td></tr><tr><td>WL</td><td>ClCon</td></tr><tr><td>WL</td><td>DataReshaping</td></tr><tr><td>WL</td><td>LSAMon</td></tr><tr><td>WL</td><td>QRMon</td></tr><tr><td>WL</td><td>SMRMon</td></tr><tr><td>WL</td><td>Tabular</td></tr><tr><td>WL</td><td>TriesWithFrequencies</td></tr></tbody></table>
+<table border="1"><thead><tr><th>language</th><th>workflow</th></tr></thead><tbody><tr><td>Python</td><td>LSAMon</td></tr><tr><td>Python</td><td>QRMon</td></tr><tr><td>Python</td><td>SMRMon</td></tr><tr><td>Python</td><td>pandas</td></tr><tr><td>R</td><td>DataReshaping</td></tr><tr><td>R</td><td>LSAMon</td></tr><tr><td>R</td><td>QRMon</td></tr><tr><td>R</td><td>SMRMon</td></tr><tr><td>Raku</td><td>DataReshaping</td></tr><tr><td>Raku</td><td>LSAMon</td></tr><tr><td>Raku</td><td>QRMon</td></tr><tr><td>Raku</td><td>SMRMon</td></tr><tr><td>Raku</td><td>TriesWithFrequencies</td></tr><tr><td>WL</td><td>ClCon</td></tr><tr><td>WL</td><td>DataReshaping</td></tr><tr><td>WL</td><td>LSAMon</td></tr><tr><td>WL</td><td>QRMon</td></tr><tr><td>WL</td><td>SMRMon</td></tr><tr><td>WL</td><td>Tabular</td></tr><tr><td>WL</td><td>TriesWithFrequencies</td></tr></tbody></table>
 
 
 Note in `dsl-examples` the language to translate from is specified.
@@ -82,6 +82,9 @@ Make an LLM example function for translation of LSA workflow building commands:
 use LLM::Functions;
 my &llm-pipeline-segment = llm-example-function(dsl-examples()<WL><LSAMon>);
 ```
+```
+# LLM::Function(-> **@args, *%args { #`(Block|5995833007872) ... }, 'chatgpt')
+```
 
 Run the LLM function over a list of DSL commands: 
 
@@ -99,8 +102,8 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules" -> {}, "StopWords" -> Automatic]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
@@ -122,8 +125,8 @@ my @commands =
 ```
 ```
 # LSAMonUnit[aAbstracts]⟹
-# LSAMonMakeDocumentTermMatrix["StemmingRules"->{}]⟹
-# LSAMonExtractTopics["NumberOfTopics"->40, Method->"NNMF"]⟹
+# LSAMonMakeDocumentTermMatrix["StemmingRules"->{},"StopWords"->Automatic]⟹
+# LSAMonExtractTopics["NumberOfTopics"->40,Method->"NNMF"]⟹
 # LSAMonEchoTopicsTable[]
 ```
 
