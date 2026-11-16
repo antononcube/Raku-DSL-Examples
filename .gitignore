@@ -4,6 +4,7 @@
 # precompiled files
 .precomp
 lib/.precomp
-.DS_Store
 .idea
 .iml
+.log
+.DS_Store
